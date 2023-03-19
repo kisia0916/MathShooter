@@ -15,5 +15,8 @@ module.exports = {
           loader: 'ts-loader' //ts-loader使うよ
         }
       ]
+    },
+    externals: {
+      jquery: 'jQuery',
     }
   }

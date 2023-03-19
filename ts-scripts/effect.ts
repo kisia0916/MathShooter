@@ -18,7 +18,7 @@ export const damage_animation = async()=>{
     now_damage_counter = 0
     while(now_damage_counter<0.3){
         ctx.clearRect(0,0,canvas.width,canvas.height)
-        re_render_screen("#FFD700")
+        re_render_screen()
 
         write_damage_effect()
         now_damage_counter+=0.02
@@ -29,7 +29,7 @@ export const damage_animation = async()=>{
     }
     while(now_damage_counter>=0){
         ctx.clearRect(0,0,canvas.width,canvas.height)
-        re_render_screen("#FFD700")
+        re_render_screen()
 
         write_damage_effect()
         now_damage_counter-=0.02
@@ -40,5 +40,6 @@ export const damage_animation = async()=>{
     }
     ctx.clearRect(0,0,canvas.width,canvas.height)
     now_damage_counter = 0
+    re_render_screen()
 }
 /////......ダメージ系のエフェクト......./////////
