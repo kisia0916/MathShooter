@@ -213,6 +213,9 @@ export const render_border = ():void =>{
         }
     }
 }
+export const cerect_back_con = (num:number):number=>{
+    return 0
+}
 // export const write_box_main = (num:number,color:string):void=>{
 //     write_box(ctx,stage_data[i][0],stage_data[i][1],box_size,box_size,15,box_color,40,30)
 // }
