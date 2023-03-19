@@ -1,5 +1,5 @@
 import { render_back, write_box, write_player } from "./write_object"
-import { ctx,other_players, box_size, canvas, box_number, map_data, screen_max_w,screen_max_h, p_x_screen,p_y_screen, field_w, speed } from "."
+import { ctx,other_players, box_size, canvas, box_number, map_data, screen_max_w,screen_max_h, p_x_screen,p_y_screen, field_w, speed, cerect_back } from "."
 import { p_x,p_y} from "./index";
 import { check_hit } from "./algos";
 
@@ -53,7 +53,19 @@ document.addEventListener('keydown', (event) => {
     if(event.key == "d"){
         right_push = true;
     }
-
+    if(event.key == "1"){
+        cerect_back.p = 0
+    }else if(event.key == "2"){
+        cerect_back.p = 1
+    }else if(event.key == "3"){
+        cerect_back.p = 2
+    }else if(event.key == "4"){
+        cerect_back.p = 3
+    }else if(event.key == "5"){
+        cerect_back.p = 4
+    }else if(event.key == "6"){
+        cerect_back.p = 5
+    }
 });
 //keyが離されたなら
 document.addEventListener('keyup', (event) => {
@@ -213,9 +225,7 @@ export const render_border = ():void =>{
         }
     }
 }
-export const cerect_back_con = (num:number):number=>{
-    return 0
-}
+
 // export const write_box_main = (num:number,color:string):void=>{
 //     write_box(ctx,stage_data[i][0],stage_data[i][1],box_size,box_size,15,box_color,40,30)
 // }

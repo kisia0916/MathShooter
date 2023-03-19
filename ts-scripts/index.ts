@@ -74,7 +74,7 @@ export let p_y_screen:number = screen_max_h /2
 export let box_number:number = 40
 export let speed:number = 8
 export let player_color = {c:"white"}
-export let cerect_back:number = 0
+export let cerect_back = {p:0}
 export let other_players:players_ogbect[] = []//{x,y,num,color,status}
 
 // write_player(ctx,-10,p_y_screen,box_size,box_size,15,"#FFD700",43,30)
@@ -94,7 +94,7 @@ const main_loop = ():void=>{
     render_objects()
     render_objects()
     write_ui(ctx)
-    back_pack_cerect(cerect_back)
+    back_pack_cerect(cerect_back.p)
     // damage_animation()
     // console.log(p_x,p_y)
     write_player(ctx,p_x_screen,p_y_screen,box_size,box_size,15,player_color.c,"",30)
