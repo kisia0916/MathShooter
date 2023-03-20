@@ -1,7 +1,7 @@
-import { render_back, write_box, write_player } from "./write_object"
+import { render_back, render_map_data, write_box, write_player } from "./write_object"
 import { ctx,other_players, box_size, canvas, box_number, map_data, screen_max_w,screen_max_h, p_x_screen,p_y_screen, field_w, speed, cerect_back } from "."
 import { p_x,p_y} from "./index";
-import { check_hit } from "./algos";
+import { check_hit, get_miniMap_data } from "./algos";
 
 export const write_screen_flame = ():void=>{
 
@@ -24,13 +24,13 @@ export const set_border = ()=>{
     for (let i = 0;100>i;i++){
         let push_data:stage_border_type = {x:i*65,y:0,size_w:0.1,size_h:6000,color:"white",type:1}
         border_data.push(push_data)
-        console.log(border_data)
+        // console.log(border_data)
 
     }
     for (let i = 0;100>i;i++){
         let push_data:stage_border_type = {x:0,y:i*65,size_w:0.1,size_h:6000,color:"white",type:2}
         border_data.push(push_data)
-        console.log(border_data)
+        // console.log(border_data)
 
     }
 }
@@ -85,7 +85,7 @@ document.addEventListener('keyup', (event) => {
 });
 const hit_wal = (x:number,y:number):number=>{
     let flg = check_hit(x,y)
-    console.log(flg)
+    // console.log(flg)
     return flg
 }
 export const get_key_event = ():void=>{
@@ -114,7 +114,7 @@ export const get_key_event = ():void=>{
                 p_y.p += Math.floor(speed/2)
             }
         }else{
-            console.log("a")
+            // console.log("a")
             if(check_hit(p_x.p,p_y.p+speed) == 0){
                 p_y.p += speed
                 co = 1
@@ -219,10 +219,20 @@ export const render_border = ():void =>{
                 // console.log("ff",border_data[i].render_type)
                 render_back(ctx,obj_x,obj_y,border_data[i].size_w,border_data[i].size_h,border_data[i].color,border_data[i].type)
                 if(border_data[i].debug == 1){
-                    console.log("a")
+                    // console.log("a")
                 }
             }
         }
+    }
+}
+export const render_map = ()=>{
+    let render = get_miniMap_data()
+    // console.log(render)
+    for(let i = 0;render.length>i;i++){
+        let x:number = p_x.p + (p_x.p -render[i].x)
+        let y:number = p_y.p + (p_y.p -render[i].y)
+        render_map_data(x,y,"red")
+
     }
 }
 

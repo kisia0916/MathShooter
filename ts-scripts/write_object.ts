@@ -167,3 +167,15 @@ export const render_back = (ctx:any,x:number,y:number,w:number,h:number,color:st
 export const back_pack_cerect = (cerect_num:number):void=>{
     write_backpack_cerect(ctx,(screen_max_w+1100)/2-(230-95*cerect_num),screen_max_h-77,80,80,6,"","white",5)
 }
+export const render_main_num = (num:string):void=>{
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "white"
+    ctx.font = "250px arial"
+    ctx.fillText(`${num}`,90,235)
+    // ctx.stroke()
+}
+export const render_map_data = (x:number,y:number,color:string):void=>{
+    ctx.arc(screen_max_w-200+x, 17+y, 8, 0 * Math.PI / 180, 360 * Math.PI / 180, false ) ;
+    ctx.fillStyle = "red" ;
+    ctx.fill() ;
+}

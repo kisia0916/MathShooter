@@ -1,5 +1,5 @@
-import { screen_max_h, screen_max_w } from ".";
-import { render_back, write_backpack, write_box } from "./write_object";
+import { main_num, screen_max_h, screen_max_w } from ".";
+import { render_back, render_main_num, write_backpack, write_box } from "./write_object";
 
 export const write_ui = (ctx:any):void=>{
     ///HP
@@ -14,7 +14,7 @@ export const write_ui = (ctx:any):void=>{
 
     // render_back(ctx,screen_max_w+200,15,200,200,"white",1)
     //持ち物バー
-    write_backpack(ctx,(screen_max_w+1100)/2-250,screen_max_h-86,600,100,10,"rgba(169,169,169,0.6)","",30,"rgb(169,169,169)")
+    write_backpack(ctx,(screen_max_w+1100)/2-253,screen_max_h-86,600,100,10,"rgba(169,169,169,0.6)","",30,"rgb(169,169,169)")
 
     write_backpack(ctx,(screen_max_w+1100)/2-230,screen_max_h-77,80,80,8,"#DCDCDC","+",60,"#5E5E5E",5)
     write_backpack(ctx,(screen_max_w+1100)/2-135,screen_max_h-77,80,80,8,"#DCDCDC","−",60,"#5E5E5E",5)
@@ -23,7 +23,7 @@ export const write_ui = (ctx:any):void=>{
     write_backpack(ctx,(screen_max_w+1100)/2+150,screen_max_h-77,80,80,8,"#DCDCDC","",30,"#5E5E5E",5)
 
     write_backpack(ctx,(screen_max_w+1100)/2+245,screen_max_h-77,80,80,8,"#DCDCDC","",30,"#5E5E5E",5)
-
+    render_main_num(main_num.n.toString())
 
 
 

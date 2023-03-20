@@ -1,6 +1,6 @@
 
 import { damage_animation } from "./effect"
-import {  get_key_event, render_objects,render_border  } from "./init"
+import {  get_key_event, render_objects,render_border, render_map  } from "./init"
 import { back_pack_cerect, write_player } from "./write_object"
 import { up_push,down_push,left_push,right_push } from "./init"
 import { check_hit } from "./algos"
@@ -75,6 +75,7 @@ export let box_number:number = 40
 export let speed:number = 8
 export let player_color = {c:"white"}
 export let cerect_back = {p:0}
+export let main_num = {n:1}
 export let other_players:players_ogbect[] = []//{x,y,num,color,status}
 
 // write_player(ctx,-10,p_y_screen,box_size,box_size,15,"#FFD700",43,30)
@@ -94,6 +95,7 @@ const main_loop = ():void=>{
     render_objects()
     render_objects()
     write_ui(ctx)
+    render_map()
     back_pack_cerect(cerect_back.p)
     // damage_animation()
     // console.log(p_x,p_y)
