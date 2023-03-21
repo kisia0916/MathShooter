@@ -1,7 +1,7 @@
 
 import { damage_animation } from "./effect"
 import {  get_key_event, render_objects,render_border, render_map  } from "./init"
-import { back_pack_cerect, write_player } from "./write_object"
+import { back_pack_cerect, write_mouse_cursor, write_player } from "./write_object"
 import { up_push,down_push,left_push,right_push } from "./init"
 import { check_hit } from "./algos"
 import { write_ui } from "./userInterface"
@@ -57,6 +57,7 @@ export let map_data:map_objects[]  =[
     {x:3000,y:1640,size_w:60,size_h:60,render_type:1},
     {x:3000,y:1575,size_w:60,size_h:60,render_type:1},
     {x:3000,y:1510,size_w:60,size_h:60,render_type:1},
+    {x:4000,y:1510,size_w:60,size_h:60,render_type:1},
 
 
 
@@ -76,13 +77,13 @@ export let speed:number = 8
 export let player_color = {c:"white"}
 export let cerect_back = {p:0}
 export let main_num = {n:1}
+export let cursor_postion = {x:0,y:0}
 export let other_players:players_ogbect[] = []//{x,y,num,color,status}
 
 // write_player(ctx,-10,p_y_screen,box_size,box_size,15,"#FFD700",43,30)
 
 const main = ():void=>{
     write_player(ctx,p_x_screen,p_y_screen,box_size,box_size,15,"#FFD700","",30)
-
     window.requestAnimationFrame(main_loop)
 }
 
@@ -92,14 +93,16 @@ const main_loop = ():void=>{
 
     render_border()
     get_key_event()
-    render_objects()
+    // render_objects()
     render_objects()
     write_ui(ctx)
     render_map()
+
     back_pack_cerect(cerect_back.p)
     // damage_animation()
     // console.log(p_x,p_y)
     write_player(ctx,p_x_screen,p_y_screen,box_size,box_size,15,player_color.c,"",30)
+    write_mouse_cursor(cursor_postion.x,cursor_postion.y)
 
     window.requestAnimationFrame(main_loop)
 }

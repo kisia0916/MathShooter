@@ -175,7 +175,33 @@ export const render_main_num = (num:string):void=>{
     // ctx.stroke()
 }
 export const render_map_data = (x:number,y:number,color:string):void=>{
-    ctx.arc(screen_max_w-200+x, 17+y, 8, 0 * Math.PI / 180, 360 * Math.PI / 180, false ) ;
-    ctx.fillStyle = "red" ;
-    ctx.fill() ;
+
+
+    ctx.beginPath(); // パスの初期化
+    ctx.fillStyle = "red"
+    ctx.arc(screen_max_w-200+125+x, 17+125+y, 4, 0, 2 * Math.PI); // (100, 50)の位置に半径30pxの円
+    ctx.closePath(); // パスを閉じる
+    ctx.fill(); // 軌跡の範囲を塗りつぶす
+
+
+
+    // ctx.stroke()
+    // ctx.stroke()
+}
+export const write_mouse_cursor = (x:number,y:number):void=>{
+    let line_lengh:number = 50
+    // x = x+(x/4.8)
+    // y = y+(x/4.8)
+    ctx.beginPath()
+    ctx.lineWidth = 4
+    ctx.strokeStyle = "red"
+    ctx.moveTo(x-line_lengh/2,y)
+    ctx.lineTo(x+line_lengh/2,y)
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.lineWidth = 4
+    ctx.strokeStyle = "red"
+    ctx.moveTo(x,y-line_lengh/2)
+    ctx.lineTo(x,y+line_lengh/2)
+    ctx.stroke()
 }

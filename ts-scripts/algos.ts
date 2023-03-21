@@ -22,10 +22,13 @@ export const check_hit = (x:number,y:number):number=>{
 export const get_miniMap_data = ():map_objects[]=>{
     let return_list:map_objects[] = []
     for(let i = 0;map_data.length>i;i++){
-        if(map_data[i].x>p_x.p-700 && map_data[i].x<p_x.p+700 && map_data[i].y>p_y.p-700 && map_data[i].y<p_y.p+700){
+        if(map_data[i].x>p_x.p-1100 && map_data[i].x<p_x.p+1100 && map_data[i].y>p_y.p-1100 && map_data[i].y<p_y.p+1100){
             // console.log(map_data[i])
             return_list.push(map_data[i])
         }
     }
     return return_list
+}
+export const shoot_amo = ():void=>{
+    
 }

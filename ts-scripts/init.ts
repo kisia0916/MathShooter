@@ -1,5 +1,5 @@
-import { render_back, render_map_data, write_box, write_player } from "./write_object"
-import { ctx,other_players, box_size, canvas, box_number, map_data, screen_max_w,screen_max_h, p_x_screen,p_y_screen, field_w, speed, cerect_back } from "."
+import { render_back, render_map_data, write_box, write_mouse_cursor, write_player } from "./write_object"
+import { ctx,other_players, box_size, canvas, box_number, map_data, screen_max_w,screen_max_h, p_x_screen,p_y_screen, field_w, speed, cerect_back, cursor_postion } from "."
 import { p_x,p_y} from "./index";
 import { check_hit, get_miniMap_data } from "./algos";
 
@@ -229,13 +229,26 @@ export const render_map = ()=>{
     let render = get_miniMap_data()
     // console.log(render)
     for(let i = 0;render.length>i;i++){
-        let x:number = p_x.p + (p_x.p -render[i].x)
-        let y:number = p_y.p + (p_y.p -render[i].y)
-        render_map_data(x,y,"red")
+        let x:number = (render[i].x - p_x.p)
+        let y:number = (render[i].y - p_y.p)
+        let px = p_x.p/24
+        let py = p_y.p/14
+        // console.log(Math.floor(render[i].x - p_x.p),Math.floor(render[i].y - p_y.p))
+        // render_map_data(Math.floor(x),Math.floor(y),"red")
+        render_map_data(x/9,y/9,"red")
+
 
     }
 }
+window.addEventListener( "DOMContentLoaded" , ()=> {
+    canvas.addEventListener("mousemove",(e)=>{
+        const rect = canvas.getBoundingClientRect();
+        console.log(e)
+        cursor_postion.x = (e.pageX -rect.left)* (canvas.width / rect.width);
+        cursor_postion.y = (e.pageY -rect.top)* (canvas.height / rect.height);
 
+    })
+})
 // export const write_box_main = (num:number,color:string):void=>{
 //     write_box(ctx,stage_data[i][0],stage_data[i][1],box_size,box_size,15,box_color,40,30)
 // }

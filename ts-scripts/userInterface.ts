@@ -11,6 +11,11 @@ export const write_ui = (ctx:any):void=>{
     //ミニマップ
     write_box(ctx,screen_max_w-200,17,250,250,10,"rgba(255,255,255,0.3)","",12,"rgb(160,160,160)")
     // write_box(ctx,15,15,60,60,10,"white","",12)
+    ctx.beginPath(); // パスの初期化
+    ctx.fillStyle = "red"
+    ctx.arc(screen_max_w-200+125, 17+125, 4, 0, 2 * Math.PI); // (100, 50)の位置に半径30pxの円
+    ctx.closePath(); // パスを閉じる
+    ctx.fill(); // 軌
 
     // render_back(ctx,screen_max_w+200,15,200,200,"white",1)
     //持ち物バー
